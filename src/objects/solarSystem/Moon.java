@@ -18,11 +18,11 @@ public class Moon extends Universe implements AbleToHaveSurface {
     }
     public void havesurface(){System.out.println(this.getName() + "имеет поверхность с лунками");}
 
-    public void shine(Illuminators illuminators){
-        System.out.println(this.getName() + " светится в " + illuminators.getName());
+    public void shine(Illuminators.UpWwindows upWwindows){
+        System.out.println(this.getName() + " светится в " + upWwindows.getName());
     }
-    public void bebigger(){
-        System.out.println(this.getName() + " казалась крупнее");
+    public void bebigger(Earth earth){
+        System.out.println(this.getName() + " казалась крупнее, чем обычно кажется нам с " + earth.getName());
     }
 
     public void getlook(Neznaika neznaika){
@@ -41,6 +41,3 @@ public class Moon extends Universe implements AbleToHaveSurface {
     }
 
 }
-//добавить действие светиться и место где происходит(в иллюминаторах)\\
-//добавить действие казалась крупнее, добавить что -то про дальность от земли до луны
-//дд притягивала взоры + незнайки(класс)\\

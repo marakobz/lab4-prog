@@ -1,12 +1,11 @@
 package objects.entities;
 
-import objects.Rocket.FoodRoom;
+import objects.Rocket.Rooms;
+import objects.UncertainThings.DayChange;
+import objects.UncertainThings.TimeOfDay;
+import objects.food.AstroFood;
+import objects.solarSystem.Earth;
 import story.Position;
-import objects.UncertainThings.Night;
-import objects.food.AstroSausage;
-import objects.food.MeatCabbage;
-import objects.food.Slush;
-import objects.food.Soup;
 
 public class Ponchik extends Entity implements CharacterActionable,IThinkable, INoisiable {
     private Position position;
@@ -16,14 +15,14 @@ public class Ponchik extends Entity implements CharacterActionable,IThinkable, I
         this.connectToStory();
     }
 
-    public void tospin(){
-        System.out.println(this.getName() + " прокувыркался всю ночь " + this.position);
+    public void tospin(DayChange.Night night){
+        System.out.println(this.getName() + " прокувыркался всю  " + night.getName() + this.position);
     }
-    public void tobesure() {
-        System.out.println(this.getName() + " убедился");
+    public void tobesure(Earth earth) {
+        System.out.println(this.getName() + " убедился, что о возвращении на " + earth.getName() + " не может быть и речи");
     }
     public void calmdown(){
-        System.out.println(this.getName() + " успокоился");
+        System.out.println(this.getName() + " по-немногу успокоился");
     }
 
     public void beserious(){
@@ -31,22 +30,22 @@ public class Ponchik extends Entity implements CharacterActionable,IThinkable, I
     }
 
     public void checkfood(){
-        System.out.println(this.getName() + " провел ревизиюю и качество астрономических продуктов");
+        System.out.println(this.getName() + " провел ревизиюю и качество продуктов");
     }
 
-    public void eat(FoodRoom foodRoom){
+    public void eat(Rooms.FoodRoom foodRoom){
         System.out.println(this.getName() + " съел по одной порции каждого блюда из " + foodRoom.getName());
     }
 
-    public void fallenasleep(AstroSausage astroSausage){
-        System.out.println(this.getName() + " заснул с " + astroSausage.getName());
+    public void fallenasleep(AstroFood.AstroSausage astroSausage, HumanBody.Mounth mounth){
+        System.out.println(this.getName() + " заснул с " + astroSausage.getName() + " во " + mounth.getName());
     }
 
-    public void sleepless(Night night){
+    public void sleepless(DayChange.Night night){
         System.out.println(this.getName() + " спал мало в " + night.getName());
     }
 
-    public void tookout(Soup soup, Slush slush, MeatCabbage meatCabbage){
+    public void tookout(AstroFood.Soup soup, AstroFood.Slush slush, AstroFood.MeatCabbage meatCabbage){
         System.out.println(this.getName() + " проснулся и жует что-то с аппетитом, достал из термостата " + soup.getName() + ", " + slush.getName() + ", " + meatCabbage.getName());
     }
 
@@ -54,12 +53,12 @@ public class Ponchik extends Entity implements CharacterActionable,IThinkable, I
         System.out.println(this.getName() + " покончил с обедом");
     }
 
-    public void relax(){
-        System.out.println(this.getName() + " повис посреди пищевого отсека, разбросал в стороны руки и ноги");
+    public void relax(HumanBody.Hands hands, HumanBody.Leg leg, Rooms.FoodRoom foodRoom){
+        System.out.println(this.getName() + " заснул и повис посреди " + foodRoom.getName() + " , разбросал в стороны" + hands.getName() + " и " + leg.getName());
     }
 
-    public void totremble(Neznaika neznaika){
-        System.out.println(this.getName() +  " стал тормошить " + neznaika.getName());
+    public void totremble(Neznaika neznaika, HumanBody.Shoulder shoulder){
+        System.out.println(this.getName() +  " стал тормошить " + neznaika.getName() + " за " + shoulder.getName());
     }
     @Override
     public void tobe() {
@@ -77,26 +76,9 @@ public class Ponchik extends Entity implements CharacterActionable,IThinkable, I
         return true;
     }
 
-    @Override
-    public void think(String thought) {
 
-    }
+    public void think(String thought) {}
 
     @Override
-    public void noise() {
-
-    }
+    public void noise() {}
 }
-//добавить действие убедился, успокоился\\
-//добавить StatusOfFulness который будет индикатором сытости перса\\
-//добавть действие решил не теряться и отнесся к делу со всей серьезностью\\
-//добавить реплику что-то типа Я должен провести ревизию в пишевом отсеке и проверить качество продуктов\\
-//добавить действия провел ревизиюю и качество астрономических продуктов\\
-//дд съел по одной порции каждого блюда из пишевого отсека\\
-//добавить степень засыпания\\
-//дд заснул с + сосиска(класс)\\
-//дд спал мало + ночь(класс)\\
-// дд проснулся и жует что-то с аппетитом, достал из термостата нексколько + суп, голубцы, кисель(классы)\\
-//дд покончил с обедом\\, добавить реплику Для правильного пищеварения после обеда полагается немного всхрапнуть
-//дд повис посреди пищевого отсека, разбросал в стороны руки и ноги\\
-//дд тормошить за плечо + незнайку(класс)\\

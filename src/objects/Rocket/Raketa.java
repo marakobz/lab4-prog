@@ -21,6 +21,13 @@ public class Raketa extends Universe implements AbleToFly {
         System.out.println(this.getName() + " не приближается к Луне");
     }
 
+    private class TurboEngine{
+        private String min_speed,max_speed;
+        private void launch(String min_speed, String max_speed){
+            this.max_speed = max_speed;
+            this.min_speed = min_speed;
+        }
+    }
     @Override
     public void fly() {
         System.out.println(this.getName() + " летит ");

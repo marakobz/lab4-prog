@@ -1,6 +1,6 @@
 package objects.Rocket;
 
-public abstract class Furniture {
+public abstract class Furniture implements ISittable, ILayable{
     private String name;
     private StatusOfComfortness comfortness;
     private StatusOfSoftness softness;
@@ -10,6 +10,39 @@ public abstract class Furniture {
     public String getName(){
         return name;
     }
+
+    public static class Bed extends Furniture{
+        public  Bed() {
+                super("Кровать");
+            }
+
+        @Override
+        public void setean() {
+            System.out.println("может быть использована для сидения");
+        }
+
+        @Override
+        public void lay() {
+            System.out.println("может быть использован для лежания");
+        }
+    }
+
+    public static class Chair extends Furniture{
+        public Chair() {
+            super("Стул");
+        }
+        @Override
+        public void setean() {
+            System.out.println("может быть использован для сидения");
+        }
+
+        @Override
+        public void lay() {
+            System.out.println("может быть использован для лежания");
+
+        }
+    }
+
     @Override
     public String toString() {
         return super.toString();
@@ -35,6 +68,3 @@ public abstract class Furniture {
         return true;
     }
 }
-//добавить вложенные классы кровать и стул, наделить\\
-// их степенью мягкости и удобства\\
-//свзять удобство с комфортом через сравнение или исключение

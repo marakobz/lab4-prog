@@ -7,8 +7,16 @@ public class Sky extends Universe {
         this.connectToStory();
     }
 
+    public static class Stars extends Sky{
+        private String name;
+        public Stars(){
+            this.name = "звёзды";
+        }
+        public void be(Sun sun){
+            System.out.println("Если " + this.name +  " есть, то нет " + sun.getName());
+        }
+    }
     public void togetdarker(){
         System.out.println(this.getName() + " чернело со звездами");
     }
 }
-//добавить енам в небо что оно черное и бездонное, усенянное крупными здвездами\\

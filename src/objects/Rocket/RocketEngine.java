@@ -1,5 +1,7 @@
 package objects.Rocket;
 
+import objects.entities.HumanBody;
+import objects.entities.Neznaika;
 import objects.solarSystem.Universe;
 
 public class RocketEngine extends Universe {
@@ -10,19 +12,21 @@ public class RocketEngine extends Universe {
     public void tobeloud(){
         System.out.println(this.getName() + " шумит");
     }
-    public void towhisper(){
-        System.out.println(this.getName() + " шепчет");
+    public void towhisper(HumanBody.Ear ear){
+        System.out.println(this.getName() + " шепчет на " + ear.getName());
     }
 
-    private class Sounds{
-        public void makecalm(){
-            System.out.println("звуки убаюкивали");
+    public void makecalm(Neznaika neznaika){
+        System.out.println("звуки убаюкивали" + neznaika.getName());
+    }
+    public void sayS(String phrase){
+        System.out.println(this.getName() + ": " + phrase);
+    }
+
+    private class Sounds extends RocketEngine{
+        @Override
+        public void makecalm(Neznaika neznaika){
+            System.out.println("звуки убаюкивали" + neznaika.getName());
         }
     }
-    public void bib(Sounds sounds){
-        //System.out.println(this.getName() + sounds.g); //доработать
-    }
 }
-//дд шумит, шепчет,\\
-// добавить реплику
-// добавить вложенный класс звуки и их действие убаюкали

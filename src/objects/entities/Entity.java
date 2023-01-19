@@ -1,7 +1,7 @@
 package objects.entities;
 
 
-import objects.Rocket.Bed;
+import objects.Rocket.Furniture;
 import story.ForStory;
 
 public abstract class Entity implements ForStory {
@@ -25,7 +25,7 @@ public abstract class Entity implements ForStory {
         System.out.println(this.getName() + ": " + phrase);
     }
 
-    public void fallinsleep(Bed bed){
+    public void fallinsleep(Furniture.Bed bed){
         System.out.println(this.getName() + " имеет способность заснуть в любой позе в невесомости, не укладываясь в " + bed.getName());
     }
     public boolean changeSleep(StatusOfSleep sleep){
@@ -59,5 +59,3 @@ public abstract class Entity implements ForStory {
         return super.hashCode();
     }
 }
-//дд заснуть в любой позе в невесомости, не укладываясь в + кровать(класс)\\
-//добавить статус насыщения и голода, сонливости и выспанности\\

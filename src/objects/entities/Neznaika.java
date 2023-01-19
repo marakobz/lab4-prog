@@ -1,10 +1,11 @@
 package objects.entities;
 
-import objects.Rocket.Chair;
-import objects.Rocket.FoodRoom;
+import objects.Rocket.Furniture;
 import objects.Rocket.RocketEngine;
+import objects.Rocket.Rooms;
+import objects.food.AstroFood;
+import objects.solarSystem.Moon;
 import story.Position;
-import objects.food.Astromeat;
 
 
 public class Neznaika extends Entity implements CharacterActionable, IThinkable, INoisiable{
@@ -16,67 +17,66 @@ public class Neznaika extends Entity implements CharacterActionable, IThinkable,
     private Position position;
     private StatusOfHunger hunger;
 
-
-    public void allowtorest() {
-        System.out.println(this.getName() + " решил дать Пончику отдохнуть");
+    public void allowtorest(Ponchik ponchik) {
+        System.out.println(this.getName() + " решил дать " + ponchik.getName() +"отдохнуть");
     }
 
     public void togo() {
         System.out.println(this.getName() + " отправился " + this.position);
     }
 
-    public void topeep() {
-        System.out.println(this.getName() + " взглянул на Луну" );
+    public void topeep(Moon moon) {
+        System.out.println(this.getName() + " взглянул на " + moon.getName() );
     }
 
     public void notice() {
         System.out.println(this.getName() + " замечает такие подробности, которых не замечал раньше");
     }
 
-    public void neversaw() {
-        System.out.println(this.getName() + " не смотрел раньше внимательно на Луну");
+    public void neversaw(Moon moon) {
+        System.out.println(this.getName() + " не смотрел раньше внимательно на " + moon.getName());
     }
 
-    public void fly() {
-        System.out.println(this.getName() + " подлетел к Луне" + this.position);
+    public void fly(Moon moon) {
+        System.out.println(this.getName() + " подлетел к " + moon.getName());
     }
 
-    public void tostartlooking() {
-        System.out.println(this.getName() + " стал смотреть на Луну внимательно");
+    public void tostartlooking(Moon moon) {
+        System.out.println(this.getName() + " стал смотреть на " + moon.getName() + " внимательно");
     }
 
     public void dontwanttoeat(){
         System.out.println(this.getName()+ " не хотел есть");
     }
-    public void ateforcompany(Astromeat astromeat){
+    public void ateforcompany(AstroFood.Astromeat astromeat){
         System.out.println(this.getName()+ " съел за компанию "+ astromeat.getName());
     }
-    public void watchedthemoon(){
-        System.out.println(this.getName()+ " смотел на луну и не мог оторваться");
+    public void watchedthemoon(Moon moon){
+        System.out.println(this.getName()+ " смотел на " + moon.getName() + " и не мог оторваться");
     }
-    public void behungry(){
-        System.out.println(this.getName()+ " почувствовал " + this.hunger);
+    public void behungry(HumanBody.Tummy tummy){
+        System.out.println(this.getName()+ " почувствовал " + this.hunger + " в " + tummy.getName());
     }
-    public void timetoeat(FoodRoom foodroom){
-        System.out.println(this.getName()+ " сообразил что пора обедать, спустился в " + foodroom.getName());
+    public void timetoeat(Rooms.FoodRoom foodroom, Ponchik ponchik){
+        System.out.println(this.getName()+ " сообразил что пора обедать, спустился в " + foodroom.getName() + " и увидел " + ponchik.getName());
     }
     public void followexample(Ponchik ponchik){
         System.out.println(this.getName() + " решил последовать примеру " + ponchik.getName());
     }
-    public void dontlike(){
-        System.out.println(this.getName() + " не нравилось, что руки во время сна разъезжаются в стороны");
+    public void dontlike(HumanBody.Hands hands){
+        System.out.println(this.getName() + " не нравилось, что " + hands.getName() + " во время сна разъезжаются в стороны");
     }
     @Override
     public void tobe() {
         System.out.println(this.getName() + " существует");
     }
 
-    public void putfoot(Chair chair){
-        System.out.println(this.getName() + " заложил ногу за ногу, как будто сидел на  " + chair.getName());
+    public void putfoot(Furniture.Chair chair, HumanBody.Leg leg){
+        System.out.println(this.getName() + " заложил " + leg.getName() + " за " + leg.getName() + " , как будто сидел на  " + chair.getName());
     }
 
-    public void puthands(){
-        System.out.println(this.getName() + " сложил руки кренделем");
+    public void puthands(HumanBody.Hands hands){
+        System.out.println(this.getName() + " сложил " + hands.getName() + " кренделем");
     }
     public void trytosleep(){
         System.out.println(this.getName() + " приняв позу, стал пытаться заснуть");
@@ -93,12 +93,12 @@ public class Neznaika extends Entity implements CharacterActionable, IThinkable,
     public void tofallasleep(){
         System.out.println(this.getName() + " заснул");
     }
-    public void tobetrembled(){
-        System.out.println(this.getName() + " почувствовал тормошение");
+    public void tobetrembled(HumanBody.Shoulder shoulder){
+        System.out.println(this.getName() + " почувствовал тормошение за " + shoulder.getName());
     }
 
-    public void openeyes(Ponchik ponchik){
-        System.out.println(this.getName() + " открыл глаза и увидел " + ponchik.getName());
+    public void openeyes(Ponchik ponchik, HumanBody.Eyes eyes){
+        System.out.println(this.getName() + " открыл " + eyes.getName() + " и увидел " + ponchik.getName());
     }
     @Override
     public void ridespaceship() {
@@ -115,26 +115,8 @@ public class Neznaika extends Entity implements CharacterActionable, IThinkable,
         return true;
     }
 
-    @Override
-    public void think(String thought) {
-    }
+    public void think(String thought) {}
 
     @Override
-    public void noise() {
-
-    }
+    public void noise() {}
 }
-//добавить действие не хотел есть, съел для компании + астрономическую котлетку//
-//дд всё смотрел на луну и не мог оторваться//
-//дд почувстовал голод, привзять статус голодности и тд//
-//сообразил что пора обедать, спустился + пишевой отсек(класс)\\
-//дд решил последовать примеру + пончик(класс)\\
-//дд не нравилось, что руки во время сна разъезжаются в стороны//
-//дд заложил ногу за ногу, как будто сидел на + стул(класс)\\
-//дд сложил руки кренжлем\\
-//дд приняв позу, стал пытаться заснуть\\
-//дд прислушивался к + реактивный двигатель(класс)\\
-//дд казалось всякое\\
-//дд заснул\\
-//дд почуствовал тормошение\\
-//дд открыл глаза и увидел + пончик(класс)\\

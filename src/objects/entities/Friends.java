@@ -1,25 +1,39 @@
 package objects.entities;
 
-import objects.Rocket.FoodRoom;
-import objects.entities.Entity;
+import objects.Rocket.Illuminators;
+import objects.Rocket.Rooms;
+import objects.solarSystem.Sky;
+import objects.solarSystem.SkyAdj;
 
 public class Friends extends Entity implements IThinkable {
     public Friends() {
         super("Друзья");
     }
-    private FoodRoom foodroom;
+    private SkyAdj adjj;
 
-    public void getdown(FoodRoom foodroom){
-        System.out.println(this.getName() + " спустились вниз в " + foodroom);
+    public void getup(Rooms.AstroCabine astroCabine){
+            System.out.println(this. getName() + " быстро поднялись в " + astroCabine.getName());
+    }
+
+    public void saw(Illuminators.SideWindows sideWindows, Sky sky){
+        System.out.println(this.getName() + " , посмотрев в "+ sideWindows.getName() + " , увидели вокруг " + sky.getName() + this.adjj);
+    }
+    public void getdown(Rooms.FoodRoom foodroom){
+        System.out.println(this.getName() + " спустились вниз в " + foodroom.getName());
     }
     public void starteating(){
         System.out.println(this.getName() + " принялись обедать");
     }
 
-    @Override
+
     public void think(String thought) {
     }
+
+    public boolean haveadjj(SkyAdj adjj){
+        this.adjj = adjj;
+        System.out.println(this.getName() + " " + this.adjj);;
+        return true;
+    }
+
 }
-//прописать связь между незнайкой и пончиком, объеденить их\\
-//добавить действие спустились + место спуска(пищевой отсек)\\
-// дд принялись обедать//
+
